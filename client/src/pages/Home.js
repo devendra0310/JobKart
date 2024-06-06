@@ -8,6 +8,7 @@ import { FaLinkedin } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { baseUrl } from "../baseUrl";
 
 const Home = () => {
   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -15,12 +16,11 @@ const Home = () => {
   const [isLoad, setIsLoad] = useState(false);
   const [curPage, setCurPage] = useState(1);
   const itemsPerPage = 6;
-
   useEffect(() => {
     setIsLoad(true);
     const fetchJobs = async () => {
       try {
-        const response = await fetch("http://localhost:3000/all-jobs");
+        const response = await fetch(`${baseUrl}/all-jobs`);
         const data = await response.json();
         console.log(data);
         setJobs(data.jobs);

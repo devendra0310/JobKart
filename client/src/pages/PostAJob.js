@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import CreatableSelect from 'react-select/creatable';
+import { baseUrl } from "../baseUrl";
 
 const PostAJob = () => {
     const [selectedOption,setSelectedOption]=useState(null);
@@ -26,7 +27,7 @@ const PostAJob = () => {
     const isoDate = data.postingDate;
     console.log(isoDate);
     try{
-      const response= await fetch("http://localhost:3000/post-job",{
+      const response= await fetch(`${baseUrl}/post-job`,{
       method:"POST",
       headers:{ "Content-Type":"application/json" },
       body: JSON.stringify(data)

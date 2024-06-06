@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { baseUrl } from "../baseUrl";
 
 const MyJobs = () => {
   const [jobs, setJobs] = useState();
@@ -7,7 +8,7 @@ const MyJobs = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   const handleDelete = async (id) => {
-    const response=await fetch(`http://localhost:3000/delete-job/${id}`,{
+    const response=await fetch(`${baseUrl}/delete-job/${id}`,{
         method: "DELETE"
     })
     const result=await response.json();
@@ -21,7 +22,7 @@ const MyJobs = () => {
     const fetchJobs = async () => {
       try {
         const response = await fetch(
-          "http://localhost:3000/all-jobs"
+          `${baseUrl}/all-jobs`
         );
         const data = await response.json();
         setJobs(data.jobs);
