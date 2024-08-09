@@ -9,6 +9,7 @@ import { FaGithub } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { baseUrl } from "../baseUrl";
+import Spinner from "../components/Spinner";
 
 const Home = () => {
   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -20,9 +21,9 @@ const Home = () => {
     setIsLoad(true);
     const fetchJobs = async () => {
       try {
+        setIsLoad(true);
         const response = await fetch(`${baseUrl}/all-jobs`);
         const data = await response.json();
-        console.log(data);
         setJobs(data.jobs);
       } catch (error) {
         console.error("Error fetching the jobs:", error);
@@ -115,7 +116,7 @@ const Home = () => {
         {/* Jobs Card  */}
         <div className="col-span-2 bg-white p-4 rounded-sm">
           {isLoad ? (
-            <p className=" font-medium">Loading...</p>
+            <Spinner/>
           ) : result.length > 0 ? (
             <Jobs result={result} />
           ) : (
