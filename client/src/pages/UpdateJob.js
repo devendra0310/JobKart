@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import {useParams } from 'react-router-dom'
-import { useForm } from "react-hook-form";
 import CreatableSelect from 'react-select/creatable';
 
 
@@ -21,11 +20,6 @@ const UpdateJob = () => {
   fetchJob();
 
   const [selectedOption,setSelectedOption]=useState(null);
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
 
   async function onSubmit(data)  {
     console.log(data);
@@ -66,7 +60,6 @@ const UpdateJob = () => {
               <input
                 type="text"
                 defaultValue={job?.jobTitle}
-                {...register("jobTitle")} 
                 className="create-job-input" />
             </div>
 
@@ -75,7 +68,6 @@ const UpdateJob = () => {
               <input
                 type="text"
                 defaultValue={job?.companyName}
-                {...register("companyName")} 
                 className="create-job-input" />
             </div>
           </div>
@@ -86,7 +78,6 @@ const UpdateJob = () => {
               <input
                 type="text"
                 defaultValue={job?.minPrice}
-                {...register("minPrice")} 
                 className="create-job-input" />
             </div>
 
@@ -95,7 +86,6 @@ const UpdateJob = () => {
               <input
                 type="text"
                 defaultValue={job?.maxPrice}
-                {...register("maxPrice")} 
                 className="create-job-input" />
             </div>
           </div>
@@ -104,7 +94,6 @@ const UpdateJob = () => {
           <div className="lg:w-1/2 w-full">
               <label className="block mb-2 text-lg">Salary Type</label>
               <select
-                {...register("salaryType")} 
                 className="create-job-input">
                     <option value={job?.salaryType}>{job?.salaryType}</option>
                     <option value="Hourly">Hourly</option>
@@ -118,7 +107,6 @@ const UpdateJob = () => {
               <input
                 type="text"
                 defaultValue={job?.jobLocation}
-                {...register("jobLocation")} 
                 className="create-job-input" />
             </div>
           </div>
@@ -129,14 +117,12 @@ const UpdateJob = () => {
               <input
                 type="date"
                 defaultValue={job?.postingDate}
-                {...register("postingDate")} 
                 className="create-job-input" />
             </div>
 
           <div className="lg:w-1/2 w-full">
               <label className="block mb-2 text-lg">Experience Level</label>
               <select
-                {...register("experienceLevel")} 
                 className="create-job-input">
                     <option value={job?.experienceLevel}>{job?.experienceLevel} </option>
                     <option value="NoExperience">No Experience</option>
@@ -163,14 +149,12 @@ const UpdateJob = () => {
               <input
                 type="url"
                 defaultValue={job?.companyLogo}
-                {...register("companyLogo")} 
                 className="create-job-input" />
             </div>
 
           <div className="lg:w-1/2 w-full">
               <label className="block mb-2 text-lg">Employement Type</label>
               <select
-                {...register("employmentType")} 
                 className="create-job-input">
                     <option value={job?.employmentType}>{job?.employmentType}</option>
                     <option value="NoExperience">Full-Time</option>
@@ -183,7 +167,7 @@ const UpdateJob = () => {
           <div className="create-job-flex">
           <label className="block mb-2 text-lg">Job Description</label>
           <textarea className="w-full pl-3 py-1.5 focus:outline-none placeholder:text-gray-700" 
-          rows={6} placeholder="Job Description" {...register("description")} 
+          rows={6} placeholder="Job Description"
             defaultValue={job?.description}
           />
           </div>
@@ -193,7 +177,6 @@ const UpdateJob = () => {
           <input
                 type="email"
                 defaultValue={job?.postedBy}
-                {...register("postedBy")} 
                 className="create-job-input" />
           </div>
 
